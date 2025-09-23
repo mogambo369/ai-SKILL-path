@@ -1,60 +1,19 @@
-import { type NextRequest, NextResponse } from "next/server"
+// /pages/api/ai-recommendations.ts
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export async function POST(request: NextRequest) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== "POST") return res.status(405).json({ error: "Only POST allowed" });
   try {
-    const { userId, userMetrics } = await request.json()
-
-    // For now, we'll simulate the Python model results
-    // In production, you would call the Python scripts or use a Python API
-
-    // Simulate course recommendations
-    const recommendations = [
-      {
-        course_id: "course_1",
-        title: "Advanced React Development",
-        category: "Web Development",
-        difficulty: "Advanced",
-        predicted_rating: 4.8,
-        reason: "Based on your JavaScript skills and learning patterns",
-      },
-      {
-        course_id: "course_2",
-        title: "Machine Learning Fundamentals",
-        category: "Data Science",
-        difficulty: "Intermediate",
-        predicted_rating: 4.6,
-        reason: "Matches your analytical thinking and Python experience",
-      },
-      {
-        course_id: "course_3",
-        title: "Cloud Architecture with AWS",
-        category: "Cloud Computing",
-        difficulty: "Intermediate",
-        predicted_rating: 4.4,
-        reason: "Complements your backend development skills",
-      },
-    ]
-
-    // Simulate skill assessment
-    const skillAssessment = {
-      predicted_skill: "Intermediate",
-      confidence: {
-        Beginner: 0.15,
-        Intermediate: 0.7,
-        Advanced: 0.15,
-      },
-      strengths: ["Problem Solving", "Code Quality", "Learning Speed"],
-      areas_for_improvement: ["System Design", "Advanced Algorithms"],
-    }
-
-    return NextResponse.json({
-      success: true,
-      recommendations,
-      skillAssessment,
-      message: "AI analysis completed successfully",
-    })
-  } catch (error) {
-    console.error("AI recommendations error:", error)
-    return NextResponse.json({ success: false, error: "Failed to generate AI recommendations" }, { status: 500 })
+    // we have to call to the Python ml micoservices
+    const aiRes = await fetch('http://localhost:8500/ai-recommend', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req.body)
+    });
+    const data = await aiRes.json();
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 }
+
