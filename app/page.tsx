@@ -1,440 +1,136 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, BookOpen, Target, TrendingUp, Users, Award, Globe, Zap } from "lucide-react"
 import Link from "next/link"
+import { Star, Github, Linkedin, Twitter } from "lucide-react"
+import { FAQChatbot } from "@/components/faq-chatbot"
+import Galaxy from "@/components/visuals/Galaxy"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-primary-foreground" />
+    <div className="min-h-screen bg-ethereal">
+      {/* Header */}
+      <header className="sticky top-0 z-30">
+        <div className="glass border-b border-border/60">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-foreground/90 flex items-center justify-center">
+                <Star className="w-4 h-4 text-background" />
               </div>
-              <span className="font-heading font-bold text-xl text-foreground">SkillPath AI</span>
+              <span className="font-heading text-xl tracking-wide">Learning</span>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
-                Features
-              </Link>
-              <Link href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
-                How it Works
-              </Link>
-              <Link href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">
-                Success Stories
-              </Link>
-              <Link href="/auth/login">
-                <Button variant="outline" size="sm">
-                  Sign In
-                </Button>
-              </Link>
-              <Link href="/auth/signup">
-                <Button size="sm">Get Started</Button>
-              </Link>
-            </div>
+            <nav className="hidden md:flex items-center gap-6 text-sm">
+              <Link href="/dashboard" className="text-foreground/70 hover:text-foreground">My Path</Link>
+              <Link href="/courses" className="text-foreground/70 hover:text-foreground">Courses</Link>
+              <Link href="/certificates" className="text-foreground/70 hover:text-foreground">Verify</Link>
+              <div className="ml-4 h-4 w-px bg-foreground/20" />
+              <div className="flex items-center gap-3 text-foreground/70">
+                <a href="#" aria-label="GitHub" className="hover:text-foreground"><Github className="w-4 h-4" /></a>
+                <a href="#" aria-label="LinkedIn" className="hover:text-foreground"><Linkedin className="w-4 h-4" /></a>
+                <a href="#" aria-label="Twitter" className="hover:text-foreground"><Twitter className="w-4 h-4" /></a>
+                <span className="text-xs ml-2">Contact: +1 555 0199</span>
+              </div>
+            </nav>
           </div>
         </div>
-      </nav>
+      </header>
 
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-6">
-              Powered by AI • NSQF Aligned • Real-time Market Data
-            </Badge>
-            <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-balance mb-6">
-              Your Personalized Path to <span className="text-primary">Career Success</span>
+      {/* Hero */}
+      <section className="relative">
+        {/* Pink galaxy background across the hero */}
+        <div className="absolute inset-0 -z-10">
+          <Galaxy mouseRepulsion={true} mouseInteraction={true} density={1.5} glowIntensity={0.5} saturation={0.8} hueShift={330} />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent/20 text-foreground/80 text-xs mb-6">
+              Bright, magical, sophisticated
+            </div>
+            <h1 className="font-heading text-5xl sm:text-6xl leading-tight text-foreground mb-6">
+              Learn with a spark of wonder
             </h1>
-            <p className="text-xl text-muted-foreground text-pretty mb-8 max-w-2xl mx-auto">
-              Navigate India's vocational training ecosystem with AI-powered recommendations. Get personalized learning
-              pathways that match your skills, goals, and market demand.
+            <p className="text-foreground/70 text-lg max-w-2xl mx-auto mb-8">
+              A minimalist, luminous learning home. Curated paths, elegant design, and a friendly guide to help you find the perfect course.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/onboarding">
-                <Button size="lg" className="text-lg px-8">
-                  Find Your Path
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+                <Button size="lg" className="px-8">Start your path</Button>
               </Link>
-              <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent">
-                Watch Demo
-              </Button>
-            </div>
-            <p className="text-sm text-muted-foreground mt-6">
-              Free to start • No credit card required • Join 50,000+ learners
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Overview */}
-      <section id="features" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl lg:text-4xl mb-4">Intelligent Career Navigation</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our AI engine combines your profile with real-time market data to create personalized learning pathways
-              that lead to employment.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="font-heading">AI-Driven Recommendations</CardTitle>
-                <CardDescription>
-                  Advanced algorithms analyze your skills, goals, and market trends to suggest the most relevant courses
-                  and certifications.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="font-heading">NSQF Alignment</CardTitle>
-                <CardDescription>
-                  All recommendations are aligned with the National Skills Qualifications Framework, ensuring industry
-                  recognition and stackable credentials.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <TrendingUp className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="font-heading">Real-time Market Data</CardTitle>
-                <CardDescription>
-                  Stay ahead with live job market intelligence, salary trends, and emerging skill demands across
-                  industries.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="font-heading">Collaborative Learning</CardTitle>
-                <CardDescription>
-                  Connect with learners who share similar goals and learn from their successful pathways and
-                  experiences.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Globe className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="font-heading">Multilingual Support</CardTitle>
-                <CardDescription>
-                  Access the platform in multiple Indian languages with culturally relevant content and local market
-                  insights.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="font-heading">Dynamic Updates</CardTitle>
-                <CardDescription>
-                  Your learning path evolves with you. As you progress and market conditions change, recommendations
-                  adapt automatically.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* How it Works */}
-      <section id="how-it-works" className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl lg:text-4xl mb-4">How SkillPath AI Works</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Three simple steps to discover your personalized learning journey
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-primary-foreground">1</span>
-              </div>
-              <h3 className="font-heading font-semibold text-xl mb-4">Profile Creation</h3>
-              <p className="text-muted-foreground">
-                Tell us about your background, skills, career aspirations, and learning preferences. Our AI analyzes
-                this data to understand your unique profile.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-primary-foreground">2</span>
-              </div>
-              <h3 className="font-heading font-semibold text-xl mb-4">AI Analysis</h3>
-              <p className="text-muted-foreground">
-                Our recommendation engine processes your profile against real-time job market data, NSQF qualifications,
-                and successful learner pathways.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-primary-foreground">3</span>
-              </div>
-              <h3 className="font-heading font-semibold text-xl mb-4">Personalized Path</h3>
-              <p className="text-muted-foreground">
-                Receive a customized learning pathway with courses, certifications, and on-the-job training
-                opportunities that lead to your dream career.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section id="testimonials" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl lg:text-4xl mb-4">Success Stories</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Real learners, real results. See how SkillPath AI has transformed careers.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="font-semibold text-primary">RP</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Rajesh Patel</h4>
-                    <p className="text-sm text-muted-foreground">Solar Technician, Gujarat</p>
-                  </div>
-                </div>
-                <CardDescription>
-                  "SkillPath AI helped me transition from electrical work to solar installation. The personalized
-                  pathway showed me exactly which certifications I needed. Now I'm earning 40% more!"
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="font-semibold text-primary">PS</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Priya Sharma</h4>
-                    <p className="text-sm text-muted-foreground">Digital Marketing Specialist, Delhi</p>
-                  </div>
-                </div>
-                <CardDescription>
-                  "As a commerce graduate, I was unsure about my career path. The AI recommendations guided me to
-                  digital marketing courses. I landed my dream job within 6 months!"
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-sm">
-              <CardHeader>
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="font-semibold text-primary">AK</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Amit Kumar</h4>
-                    <p className="text-sm text-muted-foreground">Data Analyst, Bangalore</p>
-                  </div>
-                </div>
-                <CardDescription>
-                  "The platform showed me how my engineering background could lead to data science. The stackable
-                  micro-credentials approach made the transition smooth and affordable."
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Partnerships */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-2xl lg:text-3xl mb-4">Trusted Partners</h2>
-            <p className="text-muted-foreground">Working with leading institutions to provide quality education</p>
-          </div>
-
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            <div className="bg-muted rounded-lg px-6 py-3">
-              <span className="font-semibold">NCVET</span>
-            </div>
-            <div className="bg-muted rounded-lg px-6 py-3">
-              <span className="font-semibold">Skill India</span>
-            </div>
-            <div className="bg-muted rounded-lg px-6 py-3">
-              <span className="font-semibold">NSDC</span>
-            </div>
-            <div className="bg-muted rounded-lg px-6 py-3">
-              <span className="font-semibold">Industry Partners</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="font-heading font-bold text-3xl lg:text-4xl text-primary-foreground mb-6">
-              Ready to Transform Your Career?
-            </h2>
-            <p className="text-xl text-primary-foreground/90 mb-8">
-              Join thousands of learners who have found their path to success with SkillPath AI. Start your personalized
-              learning journey today.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/auth/signup">
-                <Button size="lg" variant="secondary" className="text-lg px-8">
-                  Get Started for Free
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+              <Link href="/courses">
+                <Button size="lg" variant="outline" className="px-8 bg-transparent">Browse courses</Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
-              >
-                Schedule Demo
-              </Button>
             </div>
+            <p className="text-xs text-foreground/60 mt-6">Playfair Display for a timeless, feminine touch</p>
           </div>
         </div>
+
+        {/* Removed centered guide box */}
       </section>
 
-      {/* Footer */}
-      <footer className="bg-muted/50 py-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-5 h-5 text-primary-foreground" />
+      {/* Footer with social + FAQ */}
+      <footer className="mt-24">
+        <div className="border-t border-border/60">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 text-sm">
+            <div className="grid lg:grid-cols-3 gap-10">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-foreground/90 flex items-center justify-center">
+                    <Star className="w-4 h-4 text-background" />
+                  </div>
+                  <span className="font-heading text-lg">Learning</span>
                 </div>
-                <span className="font-heading font-bold text-xl">SkillPath AI</span>
+                <p className="text-foreground/70">Bright, magical, sophisticated learning.</p>
+                <div className="flex items-center gap-3 text-foreground/70">
+                  <a href="#" aria-label="GitHub" className="hover:text-foreground"><Github className="w-4 h-4" /></a>
+                  <a href="#" aria-label="LinkedIn" className="hover:text-foreground"><Linkedin className="w-4 h-4" /></a>
+                  <a href="#" aria-label="Twitter" className="hover:text-foreground"><Twitter className="w-4 h-4" /></a>
+                  <span className="ml-2">Contact: +1 555 0199</span>
+                </div>
               </div>
-              <p className="text-muted-foreground text-sm">
-                Empowering India's workforce with AI-driven personalized learning pathways.
-              </p>
+
+              <div className="lg:col-span-2">
+                <h3 className="font-heading text-base mb-4">FAQ</h3>
+                <div className="grid md:grid-cols-2 gap-6 text-foreground/80">
+                  <div>
+                    <p className="font-semibold mb-1">What exactly is SkillSparkle?</p>
+                    <p className="text-sm">SkillSparkle is your personal career navigator! 🚀 Think of it as a magical map for your professional journey. We use smart AI to create a unique, step-by-step learning path just for you, connecting you with the best courses and skills needed to land your dream job.</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">How does the AI create my personalized learning path?</p>
+                    <p className="text-sm">It's a little bit of magic and a lot of smart tech! 🤖 Tell us your skills, background, and goals. Our AI compares them with real-time market demand and designs the most efficient pathway of courses and credentials. Your path adapts as you progress.</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">What are Verifiable Credentials and why blockchain?</p>
+                    <p className="text-sm">They’re secure, digital trophies you truly own. 🔗 We record them on blockchain so they're authentic and instantly shareable with employers—no paper or long verification calls.</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Do I need to understand AI or blockchain?</p>
+                    <p className="text-sm">Absolutely not! We keep the tech invisible so you can focus on your goals. If you can use a social app, you can use SkillSparkle.</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Who is this platform for?</p>
+                    <p className="text-sm">Students exploring paths, professionals upskilling, and career-changers pivoting into new industries.</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">How do I get started?</p>
+                    <p className="text-sm">It's super easy! Sign up free, personalize with quick questions, and explore your first tailored learning path.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <h4 className="font-semibold mb-4">Platform</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    For Learners
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    For Trainers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    For Institutions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    API Access
-                  </Link>
-                </li>
-              </ul>
+            <div className="mt-10 flex items-center justify-between text-foreground/60">
+              <span>© 2024 YourPlatformName</span>
+              <div className="flex items-center gap-3">
+                <a href="#" aria-label="GitHub" className="hover:text-foreground"><Github className="w-4 h-4" /></a>
+                <a href="#" aria-label="LinkedIn" className="hover:text-foreground"><Linkedin className="w-4 h-4" /></a>
+                <a href="#" aria-label="Twitter" className="hover:text-foreground"><Twitter className="w-4 h-4" /></a>
+              </div>
             </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    Career Guide
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    Success Stories
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 SkillPath AI. All rights reserved. Built for India's digital future.</p>
           </div>
         </div>
       </footer>
+
+      {/* FAQ Chatbot */}
+      <FAQChatbot />
     </div>
   )
 }

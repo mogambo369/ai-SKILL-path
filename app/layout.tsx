@@ -1,9 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { DM_Sans, Space_Grotesk } from "next/font/google"
+import { DM_Sans, Space_Grotesk, Playfair_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Suspense } from "react"
+import { SolanaWalletProvider } from "@/components/solana/wallet-provider"
 import "./globals.css"
 
 const dmSans = DM_Sans({
@@ -15,6 +16,12 @@ const dmSans = DM_Sans({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
+  display: "swap",
+})
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
   display: "swap",
 })
 
@@ -31,10 +38,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dmSans.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+      <body className={`${dmSans.variable} ${spaceGrotesk.variable} ${playfair.variable} font-sans antialiased`}>
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-            {children}
+            <SolanaWalletProvider>
+              {children}
+            </SolanaWalletProvider>
           </ThemeProvider>
         </Suspense>
         <Analytics />

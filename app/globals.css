@@ -4,42 +4,43 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette to blue shiny and black design */
-  --background: oklch(1 0 0); /* #ffffff */
-  --foreground: oklch(0.15 0 0); /* #1f2937 - dark gray/black */
-  --card: oklch(0.98 0.02 240); /* #f8faff - soft blue-white */
-  --card-foreground: oklch(0.15 0 0); /* #1f2937 */
-  --popover: oklch(1 0 0); /* #ffffff */
-  --popover-foreground: oklch(0.15 0 0); /* #1f2937 */
-  --primary: oklch(0.55 0.25 240); /* #2563eb - blue-600 */
-  --primary-foreground: oklch(1 0 0); /* #ffffff */
-  --secondary: oklch(0.6 0.2 240); /* #3b82f6 - blue-500 */
-  --secondary-foreground: oklch(1 0 0); /* #ffffff */
-  --muted: oklch(0.96 0.02 240); /* #f1f5f9 - very light blue */
-  --muted-foreground: oklch(0.4 0 0); /* #6b7280 */
-  --accent: oklch(0.65 0.3 240); /* #1d4ed8 - blue-700 shiny */
-  --accent-foreground: oklch(1 0 0); /* #ffffff */
-  --destructive: oklch(0.5 0.2 15); /* #dc2626 - red-600 */
-  --destructive-foreground: oklch(1 0 0); /* #ffffff */
-  --border: oklch(0.9 0.02 240); /* #e2e8f0 - light blue-gray */
-  --input: oklch(1 0 0); /* #ffffff */
-  --ring: oklch(0.55 0.25 240 / 0.3); /* blue-600 with opacity */
-  --chart-1: oklch(0.55 0.25 240); /* #2563eb */
-  --chart-2: oklch(0.6 0.2 240); /* #3b82f6 */
-  --chart-3: oklch(0.65 0.3 240); /* #1d4ed8 */
-  --chart-4: oklch(0.15 0 0); /* #1f2937 - black */
-  --chart-5: oklch(0.4 0 0); /* #6b7280 - gray */
-  --radius: 0.5rem;
-  --sidebar: oklch(0.98 0.02 240); /* #f8faff */
-  --sidebar-foreground: oklch(0.15 0 0); /* #1f2937 */
-  --sidebar-primary: oklch(0.55 0.25 240); /* #2563eb */
-  --sidebar-primary-foreground: oklch(1 0 0); /* #ffffff */
-  --sidebar-accent: oklch(0.96 0.02 240); /* #f1f5f9 */
-  --sidebar-accent-foreground: oklch(0.15 0 0); /* #1f2937 */
-  --sidebar-border: oklch(0.9 0.02 240); /* #e2e8f0 */
-  --sidebar-ring: oklch(0.55 0.25 240 / 0.3); /* blue ring */
+  /* Feminine palette: lavender, pastel pink, aqua, black */
+  --background: oklch(0.99 0.02 320);
+  --foreground: oklch(0.18 0.03 300);
+  --card: oklch(1 0.01 320);
+  --card-foreground: oklch(0.2 0.03 300);
+  --popover: oklch(1 0.01 320);
+  --popover-foreground: oklch(0.18 0.03 300);
+  --primary: oklch(0.8 0.18 310); /* lavender */
+  --primary-foreground: oklch(0.14 0.03 300);
+  --secondary: oklch(0.92 0.12 350); /* soft pink */
+  --secondary-foreground: oklch(0.2 0.03 300);
+  --muted: oklch(0.98 0.03 330);
+  --muted-foreground: oklch(0.42 0.04 300);
+  --accent: oklch(0.9 0.15 200); /* aqua */
+  --accent-foreground: oklch(0.18 0.03 300);
+  --destructive: oklch(0.72 0.18 20);
+  --destructive-foreground: oklch(0.15 0.02 0);
+  --border: oklch(0.94 0.02 320);
+  --input: oklch(1 0.01 320);
+  --ring: oklch(0.85 0.16 310 / 0.35);
+  --chart-1: oklch(0.8 0.18 310);
+  --chart-2: oklch(0.92 0.12 350);
+  --chart-3: oklch(0.9 0.15 200);
+  --chart-4: oklch(0.18 0.03 300);
+  --chart-5: oklch(0.5 0.05 300);
+  --radius: 0.75rem;
+  --sidebar: oklch(1 0.01 320);
+  --sidebar-foreground: oklch(0.18 0.03 300);
+  --sidebar-primary: oklch(0.8 0.18 310);
+  --sidebar-primary-foreground: oklch(0.14 0.03 300);
+  --sidebar-accent: oklch(0.98 0.03 330);
+  --sidebar-accent-foreground: oklch(0.2 0.03 300);
+  --sidebar-border: oklch(0.94 0.02 320);
+  --sidebar-ring: oklch(0.85 0.16 310 / 0.35);
   --font-dm-sans: "DM Sans", sans-serif;
   --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-playfair: "Playfair Display", serif;
 }
 
 .dark {
@@ -81,7 +82,7 @@
 @theme inline {
   /* Updated font variables to use new fonts */
   --font-sans: var(--font-dm-sans);
-  --font-heading: var(--font-space-grotesk);
+  --font-heading: var(--font-playfair);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -130,5 +131,57 @@
 }
 
 .font-heading {
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-playfair);
+}
+
+/* Ethereal sparkle + constellation background */
+.bg-ethereal {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklch, var(--accent) 25%, transparent), transparent),
+    radial-gradient(900px 500px at 110% 10%, color-mix(in oklch, var(--primary) 20%, transparent), transparent),
+    radial-gradient(800px 400px at 50% 120%, color-mix(in oklch, var(--secondary) 20%, transparent), transparent);
+  position: relative;
+}
+
+.bg-ethereal:before,
+.bg-ethereal:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* subtle glitter */
+.bg-ethereal:before {
+  background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.7) 0.5px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.6) 0.6px, transparent 1px),
+    radial-gradient(circle at 60% 70%, rgba(255,255,255,0.5) 0.5px, transparent 1px),
+    radial-gradient(circle at 30% 80%, rgba(255,255,255,0.6) 0.6px, transparent 1px);
+  background-size: 150px 150px, 200px 200px, 180px 180px, 220px 220px;
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
+/* abstract Southern Cross shimmer */
+.bg-ethereal:after {
+  background:
+    radial-gradient(closest-side, rgba(255,255,255,0.7), transparent) 60% 35%/3px 3px no-repeat,
+    radial-gradient(closest-side, rgba(255,255,255,0.7), transparent) 63% 38%/2px 2px no-repeat,
+    radial-gradient(closest-side, rgba(255,255,255,0.7), transparent) 57% 40%/2px 2px no-repeat,
+    radial-gradient(closest-side, rgba(255,255,255,0.7), transparent) 62% 44%/2px 2px no-repeat,
+    radial-gradient(closest-side, rgba(255,255,255,0.7), transparent) 58% 46%/2px 2px no-repeat;
+  opacity: 0.4;
+}
+
+.glass {
+  background: color-mix(in oklch, var(--background) 70%, transparent);
+  backdrop-filter: saturate(180%) blur(16px);
+}
+
+/* Galaxy container base style */
+.galaxy-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  pointer-events: none; /* keep interactions on page elements */
 }

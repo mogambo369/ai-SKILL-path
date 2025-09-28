@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Bell, Search, Settings, User, LogOut, BookOpen, Menu } from "lucide-react"
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 import Link from "next/link"
 
 export function DashboardHeader() {
@@ -62,6 +63,11 @@ export function DashboardHeader() {
             <div className="hidden md:flex relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input placeholder="Search courses, skills..." className="pl-10 w-64" />
+            </div>
+
+            {/* Wallet */}
+            <div className="hidden md:flex">
+              <WalletMultiButton className="btn btn-primary" />
             </div>
 
             {/* Notifications */}
